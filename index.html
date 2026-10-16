@@ -23,13 +23,13 @@
 </main>
 <footer class="footer"><div class="wrap"><div class="foot"><a class="brand" href="#start"><span class="logo">SBR</span><span>SCHUBERT REISEN<small>FLUGTICKETS · CONSOLIDATOR</small></span></a><div class="footlinks"><a href="https://www.schubert-reisen.de/?page_id=379" target="_blank">AGB</a><a href="https://www.schubert-reisen.de/?page_id=360" target="_blank">Impressum</a><a href="https://www.schubert-reisen.de/" target="_blank">Datenschutz (Originalseite)</a><a href="https://www.schubert-reisen.de/?page_id=388" target="_blank">Agenturanmeldung</a><a href="#" onclick="openModal('press');return false">Presse</a><a href="#" onclick="openModal('rating');return false">Bewertung</a><a href="#" onclick="openModal('login');return false">Extranet / JuAcc</a></div></div><div class="bottom"><span>© <span id="year"></span> Schubert Reisen GmbH · Osnabrück</span><a class="jg" href="https://jumix25.github.io/jugroup/" target="_blank"><b>JG</b> Made by JuGroup <span class="unpaid">· unbezahlt</span></a></div></div></footer>
 <button class="chatbtn" id="chatToggle">✦ Service-Chat</button><div class="chat" id="chat"><div class="chathead">SBR Service-Assistent <button id="chatClose">×</button><small style="display:block;font-weight:400">Demo · KI zuerst, Service-Team danach</small></div><div class="chatbody" id="chatbody"><div class="bubble">Hallo! Ich bin der digitale SBR-Assistent. Wobei kann ich helfen?</div><div class="quick"><button data-chat="cockpit">Cockpit / Buchung</button><button data-chat="technical">Technisches Problem</button><button data-chat="agent">Agentur werden</button><button data-chat="team">Service-Team</button></div></div><form class="chatform" id="chatForm"><input id="chatInput" placeholder="Nachricht schreiben…" aria-label="Chatnachricht"><button>➤</button></form></div>
-<div class="modal" id="login"><div class="glass modalbox"><button class="close" onclick="closeModal('login')">×</button><div class="eyebrow">JuAcc · Verbindungstest</div><h2>JuAcc geht</h2><p style="font-size:13px;color:var(--muted)">Vorerst schreibt dieser Test nur den Status <strong>„juacc geht“</strong> in die Firebase-Cloud-Datenbank. Das ist noch kein Benutzer-Login.</p><div id="juaccStatus" class="notice" role="status">Firebase wird initialisiert …</div><button class="btn primary" id="juaccWrite" style="margin-top:15px" type="button">„juacc geht“ in Firebase schreiben</button><p class="fine">Es werden keine Benutzerdaten oder Passwörter abgefragt. Für diesen Test muss Firebase Anonymous Authentication aktiviert und Firestore eingerichtet sein.</p></div></div>
+<div class="modal" id="login"><div class="glass modalbox"><button class="close" onclick="closeModal('login')">×</button><div class="eyebrow">JuAcc · Agentur-Login</div><h2>Bei JuAcc anmelden</h2><p style="font-size:13px;color:var(--muted)">Melde dich mit deinem für JuAcc angelegten Konto an. Die Erfolgsmeldung erscheint erst nach erfolgreicher Anmeldung.</p><form id="juaccLoginForm"><label class="field">E-Mail-Adresse<input id="juaccEmail" name="email" type="email" autocomplete="username" required placeholder="name@reisebuero.de"></label><label class="field" style="margin-top:12px">Passwort<input id="juaccPassword" name="password" type="password" autocomplete="current-password" required placeholder="Passwort" minlength="6"></label><button class="btn primary" id="juaccLoginButton" style="margin-top:15px;width:100%" type="submit">Einloggen</button></form><div id="juaccStatus" class="notice" role="status" aria-live="polite" style="display:none;margin-top:14px"></div><p class="fine">Das Konto muss vorher in Firebase Authentication angelegt werden. Diese Anmeldung schaltet noch keine weiteren Agentur-Inhalte frei.</p></div></div>
 <div class="modal" id="problem"><div class="glass modalbox"><button class="close" onclick="closeModal('problem')">×</button><div class="eyebrow">SBR Service</div><h2>Problem melden</h2><form id="problemForm"><label class="field">Name<input required name="name"></label><label class="field" style="margin-top:10px">E-Mail<input required type="email" name="email"></label><label class="field" style="margin-top:10px">Bereich<select name="area"><option>Cockpit / Buchung</option><option>Technik / Login</option><option>Ticket / Abrechnung</option><option>Sonstiges</option></select></label><label class="field" style="margin-top:10px">Beschreibung<textarea required name="message"></textarea></label><button class="btn primary" style="margin-top:14px">E-Mail vorbereiten</button></form><p class="fine">Die Meldung wird nicht online gespeichert oder automatisch versendet.</p></div></div>
 <div class="modal" id="rating"><div class="glass modalbox"><button class="close" onclick="closeModal('rating')">×</button><div class="eyebrow">Feedback</div><h2>Wie war Ihr Erlebnis?</h2><p style="font-size:13px;color:var(--muted)">Ihr Feedback hilft uns, unseren Service zu verbessern.</p><div class="stars" id="stars"><button type="button" data-star="1">★</button><button type="button" data-star="2">★</button><button type="button" data-star="3">★</button><button type="button" data-star="4">★</button><button type="button" data-star="5">★</button></div><label class="field">Kommentar<textarea id="ratingComment"></textarea></label><button class="btn primary" id="sendRating" style="margin-top:12px">Feedback per E-Mail vorbereiten</button><p class="fine">Bewertungen werden in dieser statischen Version nicht gespeichert oder öffentlich angezeigt.</p></div></div>
 <div class="modal" id="press"><div class="glass modalbox"><button class="close" onclick="closeModal('press')">×</button><div class="eyebrow">Pressebereich</div><h2>Presse & Medien</h2><p style="font-size:13px;color:var(--muted)">Für Presseanfragen, Unternehmensinformationen und Bildmaterial kontaktieren Sie bitte das SBR-Team. Offizielle Veröffentlichungen finden Sie auf der bestehenden Website.</p><a class="btn primary" href="mailto:info@schubert-reisen.de?subject=Presseanfrage%20Schubert%20Reisen">Presseanfrage schreiben ↗</a><p><a class="textlink" href="https://www.schubert-reisen.de/?cat=1" target="_blank">Offizielle Meldungen ansehen ↗</a></p></div></div><div class="toast" id="toast"></div>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyCrb99DJuHo5noNQ7AnnUdugjR9YpWEfG",
@@ -44,35 +44,46 @@ const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 const juaccStatus = document.getElementById("juaccStatus");
-const juaccWrite = document.getElementById("juaccWrite");
-juaccWrite.addEventListener("click", async () => {
-  juaccWrite.disabled = true;
-  juaccWrite.textContent = "Verbinde mit Firebase …";
-  juaccStatus.textContent = "Anmeldung und Datenbankzugriff werden geprüft …";
+const juaccLoginForm = document.getElementById("juaccLoginForm");
+const juaccLoginButton = document.getElementById("juaccLoginButton");
+function showJuaccStatus(message, success = false) {
+  juaccStatus.textContent = message;
+  juaccStatus.style.display = "block";
+  juaccStatus.style.background = success ? "#e3f8ed" : "#fff0ee";
+  juaccStatus.style.color = success ? "#176342" : "#9d3026";
+}
+juaccLoginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  juaccLoginButton.disabled = true;
+  juaccLoginButton.textContent = "Anmeldung wird geprüft …";
+  juaccStatus.style.display = "none";
   try {
-    await signInAnonymously(auth);
+    const email = document.getElementById("juaccEmail").value.trim();
+    const password = document.getElementById("juaccPassword").value;
+    await signInWithEmailAndPassword(auth, email, password);
     await setDoc(doc(db, "juacc", "status"), {
       status: "juacc geht",
       updatedAt: serverTimestamp()
     });
-    juaccStatus.textContent = "Erfolgreich: juacc geht — Status wurde in Firebase gespeichert.";
-    juaccStatus.style.background = "#e3f8ed";
-    juaccStatus.style.color = "#176342";
-    juaccWrite.textContent = "Erfolgreich geschrieben ✓";
+    showJuaccStatus("JuAcc geht — du bist erfolgreich eingeloggt.", true);
+    juaccLoginButton.textContent = "Eingeloggt ✓";
   } catch (error) {
-    console.error("JuAcc Firebase status write failed:", error);
+    console.error("JuAcc login failed:", error);
     const messages = {
-      "auth/operation-not-allowed": "Firebase Auth: Anonymous Authentication muss in der Firebase Console aktiviert werden.",
-      "permission-denied": "Firestore hat den Schreibzugriff abgelehnt. Prüfe die Firestore Security Rules.",
-      "unavailable": "Firebase ist gerade nicht erreichbar. Prüfe die Verbindung und die Firestore-Einrichtung."
+      "auth/invalid-credential": "E-Mail oder Passwort stimmt nicht. Prüfe deine Zugangsdaten.",
+      "auth/user-not-found": "Für diese E-Mail wurde kein JuAcc-Konto gefunden.",
+      "auth/wrong-password": "Das Passwort ist nicht korrekt.",
+      "auth/invalid-email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "auth/too-many-requests": "Zu viele Versuche. Warte kurz und versuche es später erneut.",
+      "auth/operation-not-allowed": "Firebase: Die Anmeldemethode E-Mail/Passwort muss aktiviert werden.",
+      "permission-denied": "Anmeldung war möglich, aber Firestore hat den Status-Schreibzugriff abgelehnt. Prüfe die Firestore-Regeln."
     };
-    juaccStatus.textContent = messages[error.code] || ("Firebase-Fehler: " + (error.code || error.message) + ". Prüfe Firebase Auth, Firestore und Security Rules.");
-    juaccStatus.style.background = "#fff0ee";
-    juaccStatus.style.color = "#9d3026";
-    juaccWrite.disabled = false;
-    juaccWrite.textContent = "Erneut versuchen";
+    showJuaccStatus(messages[error.code] || ("Anmeldung fehlgeschlagen: " + (error.code || error.message)));
+    juaccLoginButton.disabled = false;
+    juaccLoginButton.textContent = "Erneut versuchen";
   }
 });
+
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);$('#year').textContent=new Date().getFullYear();function openModal(id){$('#'+id).classList.add('open')}function closeModal(id){$('#'+id).classList.remove('open')}
 // Inline onclick-Handler brauchen globale Funktionen; ES-Module exportieren sie nicht automatisch.
 window.openModal = openModal;
