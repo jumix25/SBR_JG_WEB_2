@@ -36,3 +36,17 @@ Die Links zu AGB, Impressum und Agenturanmeldung führen vorerst auf die entspre
 
 ## Design
 Responsive HTML/CSS/JavaScript, ohne Build-Schritt. Die Website verwendet Google Fonts und externe Unsplash-Bilder; für vollständig lokale/offline Nutzung diese Assets lokal einbinden.
+
+
+## Firebase API-Key aus dem Quellcode heraushalten
+
+Die Website wird über GitHub Actions veröffentlicht. Der Quellcode enthält nur den Platzhalter `__FIREBASE_API_KEY__`; der echte Wert wird beim Build aus einem GitHub Actions Secret eingesetzt.
+
+1. Öffne **Settings → Secrets and variables → Actions** im Repository.
+2. Wähle **New repository secret**.
+3. Name: `FIREBASE_API_KEY`
+4. Secret: der aktuelle Web-API-Key aus Firebase.
+5. Öffne **Settings → Pages** und stelle **Build and deployment → Source** auf **GitHub Actions**.
+6. Starte unter **Actions** den Workflow **Deploy Schubert Reisen to GitHub Pages** oder pushe einen neuen Commit.
+
+Wichtig: Weil Firebase im Browser läuft, muss der API-Key letztlich an Besucher der Website ausgeliefert werden und kann dort ausgelesen werden. Dieser Aufbau hält ihn aus den versionierten Quelldateien heraus, macht ihn aber nicht geheim. Beschränke den Key in Google Cloud auf die benötigten APIs und autorisierten Website-Referrer. Ein bereits committeter Key bleibt außerdem in der Git-Historie; bei Bedarf muss die Historie bereinigt und der GitHub-Secret-Scanning-Alert separat behandelt werden.
